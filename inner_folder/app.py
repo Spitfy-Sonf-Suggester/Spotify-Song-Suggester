@@ -1,5 +1,4 @@
 from .data import df
-import requests
 from flask import Flask
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
