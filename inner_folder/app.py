@@ -38,7 +38,6 @@ def create_app():
 
     @APP.route('/')
     def root():
-        # return 'My rotten cunt is full of sand and shit'
         return str([(b.name, b.energy) for b in Song.query.all()])
     @APP.route('/refresh')
     def refresh():
