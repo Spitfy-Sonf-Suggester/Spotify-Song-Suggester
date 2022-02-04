@@ -1,5 +1,5 @@
 from .data import df
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
