@@ -9,38 +9,15 @@ path = os.path.join(os.getcwd(), 'data.csv')
 df1 = pd.read_csv(path)
 df = df1[['name', 'acousticness', 'danceability', 'energy', 'loudness',
                  'mode', 'liveness', 'valence', 'tempo', 'duration_ms']]
+# df_copy = pd.DataFrame({x: df[x][:50000] for x in df.columns if not x == 'name'})
 
-df_copy = pd.DataFrame({x: df[x] for x in df.columns if not x == 'name'})
+# model = NearestNeighbors(n_neighbors=2, algorithm='brute')
+# scaler = StandardScaler()
+# feats = scaler.fit_transform(df_copy)
+# model.fit(feats)
 
-model = NearestNeighbors(n_neighbors=6)
-scaler = StandardScaler()
-feats = scaler.fit_transform(df_copy)
-model.fit(feats)
-# with open('knn.pickle', 'wb') as f:
-#     pickle.dumps(model, f)
-
-
-
-# name = DB.Column(DB.String(70), primary_key=True, nullable=False)
-#     c_code = DB.Column(DB.String, nullable=False)
-#     continent = DB.Column(DB.String, nullable=False)
-#     population = DB.Column(DB.Float, nullable=False)
-# class Song(DB.Model):
-
-#     id = DB.Column(DB.BigInteger, primary_key=True, nullable=False)
-#     name = DB.Column(DB.String(50), nullable=False)
-#     acoustic = DB.Column(DB.Float, nullable=False)
-#     danceable = DB.Column(DB.Float, nullable=False)
-#     energy = DB.Column(DB.Float, nullable=False)
-#     loudness = DB.Column(DB.Float, nullable=False)
-#     mode = DB.Column(DB.Float, nullable=False)
-#     liveness = DB.Column(DB.Float, nullable=False)
-#     valence = DB.Column(DB.Float, nullable=False)
-#     tempo = DB.Column(DB.Float, nullable=False)
-#     duration_ms = DB.Column(DB.Float, nullable=False)
-
-#     def __repr__(self):
-#         return f'{self.name} is {round(self.duration_ms*60000, 2)} minutes long'
+# with open('my_model.h5', 'wb') as f:
+#     pickle.dump(model, f)
 
 
 

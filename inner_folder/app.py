@@ -1,11 +1,11 @@
 from cgi import print_directory
-from .data import df, df1, model
+from .data import df, df1 #model, scaler
 from flask import Flask, render_template, request
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 import pickle
 from sklearn.neighbors import NearestNeighbors
-# from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler
 
 
 from .data import df
@@ -60,12 +60,17 @@ def create_app():
                 
                 query = query[['acousticness', 'danceability', 'energy', 'loudness',
                     'mode', 'liveness', 'valence', 'tempo', 'duration_ms']].iloc[0].values
-                    
+                model = pickle.load(
+                    open('my_model.h5', 'rb')
+                )
+                # query = scaler.fit_transform(query)
                 distances, indices = model.kneighbors([query])
                 # names of 6 nearest neighboring songs
                 result = [df.iloc[x]['name'] for x in indices]
                 result = ' '.join(map(str, result))
                 return render_template('results.html', answer=result)
+
+            # in case the user entry is invalid
             except:
                 return render_template('base.html')
             
