@@ -38,7 +38,8 @@ def create_app():
 
     @APP.route('/')
     def root():
-        return str([(b.name, b.energy) for b in Song.query.all()])
+        return render_template('base.html', title='Home', str([(b.name, b.energy) for b in Song.query.all()]))
+    
     @APP.route('/refresh')
     def refresh():
         DB.drop_all()
@@ -48,8 +49,6 @@ def create_app():
     @APP.route('/add')
     def add_one():
 
-    #     # # name, acoustic, danceable, energy, loudness,
-    #     # #          mode, liveness, valence, tempo, duration_ms
         for x in range(100):
             n, a, d, e, l, m, li, v, t, d = df.iloc[x].values
             temp = Song(id=x, name=n, acoustic=a, danceable=d, energy=e, loudness=l, mode=m, liveness=li, valence=v, tempo=t, duration_ms=d)
