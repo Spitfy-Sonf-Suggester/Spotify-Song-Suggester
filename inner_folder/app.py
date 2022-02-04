@@ -73,6 +73,11 @@ def create_app():
         return render_template('base.html', title='Home')
 
     # route for wiping the database clean
+
+        return render_template('base.html', content=str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
+
+    
+
     @APP.route('/refresh')
     def refresh():
         DB.drop_all()
@@ -81,7 +86,7 @@ def create_app():
 
     @APP.route('/add')
     def add_one():
-        # adds information of 100 songs to database
+
         for x in range(100):
             n, a, d, e, l, m, li, v, t, d = df.iloc[x].values
             temp = Song(id=x, name=n, acoustic=a, danceable=d, energy=e, loudness=l, mode=m, liveness=li, valence=v, tempo=t, duration_ms=d)
