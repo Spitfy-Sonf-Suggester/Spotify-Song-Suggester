@@ -11,6 +11,8 @@ gunicorn = "*"
 pandas = "*"
 numpy = "*"
 fsspec = "*"
+jinja2 = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

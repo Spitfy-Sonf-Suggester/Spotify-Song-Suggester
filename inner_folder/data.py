@@ -1,11 +1,24 @@
 import pandas as pd
 import numpy as np
 import os
+import pickle
+from sklearn.neighbors import NearestNeighbors
+from sklearn.preprocessing import StandardScaler
 
 path = os.path.join(os.getcwd(), 'data.csv')
-df = pd.read_csv(path)
-df = df[['name', 'acousticness', 'danceability', 'energy', 'loudness',
+df1 = pd.read_csv(path)
+df = df1[['name', 'acousticness', 'danceability', 'energy', 'loudness',
                  'mode', 'liveness', 'valence', 'tempo', 'duration_ms']]
+
+df_copy = pd.DataFrame({x: df[x] for x in df.columns if not x == 'name'})
+
+model = NearestNeighbors(n_neighbors=6)
+scaler = StandardScaler()
+feats = scaler.fit_transform(df_copy)
+model.fit(feats)
+# with open('knn.pickle', 'wb') as f:
+#     pickle.dumps(model, f)
+
 
 
 # name = DB.Column(DB.String(70), primary_key=True, nullable=False)
