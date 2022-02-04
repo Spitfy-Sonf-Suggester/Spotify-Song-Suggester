@@ -38,7 +38,8 @@ def create_app():
 
     @APP.route('/')
     def root():
-        return render_template('base.html', str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
+        return render_template('base.html', content=str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
+
     
     @APP.route('/refresh')
     def refresh():
