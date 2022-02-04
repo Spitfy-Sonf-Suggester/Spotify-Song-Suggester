@@ -1,5 +1,5 @@
 from .data import df
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,7 +36,7 @@ def create_app():
     def create_tables():
         DB.create_all()
 
-    @APP.route('/')
+    @APP.route('/', methods=['GET', 'POST'])
     def root():
         return render_template('base.html', content=str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
 
