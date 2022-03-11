@@ -75,8 +75,6 @@ def create_app():
                 return render_template('base.html')
             
     
-        return render_template('base.html', title='Home')
-
     # route for wiping the database clean
 
         return render_template('base.html', content=str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
