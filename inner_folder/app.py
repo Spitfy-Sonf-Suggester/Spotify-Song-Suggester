@@ -99,22 +99,3 @@ def create_app():
         DB.session.commit()
         return 'Names have been added'
     return APP
-
-# DB = SQLAlchemy()
-# class Song(DB.Model):
-
-#     id = DB.Column(DB.BigInteger, primary_key=True, nullable=False)
-#     name = DB.Column(DB.String(50), nullable=False)
-#     acoustic = DB.Column(DB.Float, nullable=False)
-#     danceable = DB.Column(DB.Float, nullable=False)
-#     energy = DB.Column(DB.Float, nullable=False)
-#     loudness = DB.Column(DB.Float, nullable=False)
-#     mode = DB.Column(DB.Float, nullable=False)
-#     liveness = DB.Column(DB.Float, nullable=False)
-#     valence = DB.Column(DB.Float, nullable=False)
-#     tempo = DB.Column(DB.Float, nullable=False)
-#     duration_ms = DB.Column(DB.Float, nullable=False)
-
-#     def __repr__(self):
-#         return f'{self.name} is {round(self.duration_ms*60000, 2)} minutes long'
-
