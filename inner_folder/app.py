@@ -1,5 +1,4 @@
-from cgi import print_directory
-from .data import df, df1 #model, scaler
+from .data import df, df1
 from flask import Flask, render_template, request
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
@@ -75,7 +74,7 @@ def create_app():
                 return render_template('base.html')
             
     
-    # route for wiping the database clean
+        # route for wiping the database clean
 
         return render_template('base.html', content=str([(b.name, b.energy) for b in Song.query.all()]), title='Home')
 
