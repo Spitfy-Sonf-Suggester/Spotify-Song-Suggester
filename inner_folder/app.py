@@ -6,12 +6,6 @@ import pickle
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 
-
-from .data import df
-from flask import Flask, render_template, request
-import sqlite3
-from flask_sqlalchemy import SQLAlchemy
-
 DB = SQLAlchemy()
 class Song(DB.Model):
 
